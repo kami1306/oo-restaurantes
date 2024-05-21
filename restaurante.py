@@ -1,29 +1,31 @@
 class Restaurante:
+    restaurante =[]
+      
+    def __init__(self, nome, categoria):
+       self.nome = nome.title()
+       self.categoria = categoria.upper()
+       self._ativo = False
+       Restaurante.restaurantes.append(self)
+       
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+    @classmethod
+    def listar_restaurantes(cls):
+        print(f'{"Nome do restaurante".ljust(25)} | {"categoria".ljust(25)} | {"status".ljust(25)}')
+        for restaurante in Restaurante.restaurantes:
+            print(f'{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {"status".ljust(25)}')
 
-restaurantes = []
+    @property
+    def ativo(self):
+     return '⌧' if self._ativo else '☐'
+    
+    def alternar_estado(self):
+       self._ativo = not self._ativo
 
-def init__(self, nome,categoria):
 
-self.nome nome
-
-self.categoria = categoria self._ativo = False
-
-Restaurante.restaurantes.append(self)
-
-def str eturn ^ self): f:fself } | {self.categoria}
-
-for restaurante in Restaurante. restaurantes
-
-@property
-
-def ativo(self):
-
-def listar_restaurantes():
-
-: | print(f'(restaurante.nome.ljust(25)) | restaurante.categoria.ljust(25) | (restaurante.ativo)')
-
-return if self. ativo else 'o'
-
-restaurante_praca = Restaurante('Praça', 'Gourmet') restaurante_pizza Restaurante('Pizza express', 'Italiana')
+restaurante_praca = Restaurante('praça', 'Gourmet')
+restaurante_praca.alternar_estado()
+restaurante_pizza = Restaurante('pizza Express', 'Italiana')
 
 Restaurante.listar_restaurantes()
